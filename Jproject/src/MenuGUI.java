@@ -129,7 +129,7 @@ public class MenuGUI {
 		btnNewButton_24.setIcon(new ImageIcon(((new ImageIcon("D://abc.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		btnNewButton_24.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ol = new OrderList(LoginGUI.this.tt.getNowTime(), "한솥", "고기고기도시락", 3600, LoginGUI.this.userName, LoginGUI.this.userID);
+//				ol = new OrderList(LoginGUI.this.tt.getNowTime(), "한솥", "고기고기도시락", 3600, LoginGUI.this.userName, LoginGUI.this.userID);
 			}
 		});
 		panel_8.add(btnNewButton_24);
