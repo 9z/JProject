@@ -213,7 +213,7 @@ public class JoinGUI {
 					String inputPwChange = "";
 					inputPwChange = new String(inputPW, 0, inputPW.length);
 					frame.dispose();
-					Login login = new Login();
+					LoginGUI login = new LoginGUI();
 					login.main(null);
 				}
 

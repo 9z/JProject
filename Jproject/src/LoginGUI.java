@@ -1,31 +1,28 @@
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-
-import img.a;
-
 import java.awt.Font;
 import java.awt.Graphics;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
-import java.awt.Dimension;
+import java.util.Arrays;
 
-import javax.swing.JPasswordField;
+import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.SpringLayout;
+import javax.swing.SwingConstants;
+
+import img.a;
 
 public class LoginGUI {
 
@@ -135,37 +132,28 @@ public class LoginGUI {
 		panel.add(btnLogin);
 		btnLogin.setBackground(new Color(255, 153, 0));
 		btnLogin.addActionListener(new ActionListener() {
-			/*
-			 * 회원가입시 String타입으로 아이디를 inputID 
-			 * 패스워드를 inputPwChange에 저장함.
-			 */
+			public void actionPerformed(ActionEvent arg0) {// 로그인 버튼 액션
+				/*
+				 * 회원가입시 String타입으로 아이디를 inputID 
+				 * 패스워드를 userPwChange에 저장함.
+				 */
 
-			String inputID = inputId.getText();
-			char[] inputPW = inputPw.getPassword();//
+				String userID = id.getText();
+				char[] userPW = pw.getPassword();
 
-			// 회원등록시 빈칸 확인
-			if (inputId.getText().equals("") || isPasswordCorrect(inputPW, passwordField.getPassword())
-					|| isPasswordCorrect(inputPW, passwordField.getPassword()) || inputName.getText().equals("")
-					|| inputPhonenum.getText().equals("")) {
-				JOptionPane.showMessageDialog(frame, "빈칸을 입력해주세요");
+				if (userID.equals("id") && isPasswordCorrect(userPW)) {
+
+					JOptionPane.showMessageDialog(frame, "로그인 성공!");
+
+					// 패스워드를 String타입으로 userPWchange에 저장함.
+					String userPwChange = "";
+					userPwChange = new String(userPW, 0, userPW.length);
+
+				} else {
+					JOptionPane.showMessageDialog(frame, "로그인 실패!");
+				}
 
 			}
-
-			// 첫번째, 두번째 패스워드 일치하는지 확인
-			else if (!(isPasswordCorrect(inputPw.getPassword(), inputPwCheck.getPassword()))) {
-				JOptionPane.showMessageDialog(frame, "패스워드가 일치하지 않습니다");
-			} else {
-				
-				JOptionPane.showMessageDialog(frame, "회원가입 성공!");
-				// 여기서 char[]를 String으로 패스워드 저장.
-				String inputPwChange = "";
-				inputPwChange = new String(inputPW, 0, inputPW.length);
-				frame.dispose();
-				Login login = new Login();
-				login.main(null);
-			}
-
-		}
 
 		});
 		btnLogin.setFont(new Font("휴먼모음T", Font.PLAIN, 12));
