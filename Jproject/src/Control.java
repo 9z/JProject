@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Control {
 	private DAO dao = new DAO();
-	private Random ran = null;
+	private Random ran = new Random();
 	private int num1 = 0, num2 = 0; // 랜덤수 저장
 
 	public void randomSelect(String[] src) {
@@ -14,16 +14,20 @@ public class Control {
 
 		if (src.length >= 2) {
 
-			while (num1 == num2) { // 중복되지 않게 랜덤수 2개 반환
+			do { // 중복되지 않게 랜덤수 2개 반환
 				num1 = ran.nextInt(src.length);
 				num2 = ran.nextInt(src.length);
-			}
+			} while(num1 == num2);
 
 			dao.update(src[num1], 2); // num1 >> 주문자
 			dao.update(src[num2], 3); // num2 >> 결제자
 
 		}
 
+	}
+	
+	public String getNowTime() {
+		
 	}
 
 }
