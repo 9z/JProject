@@ -9,6 +9,9 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import img.a;
+
 import java.awt.Color;
 import javax.swing.JScrollBar;
 import javax.swing.JButton;
@@ -134,7 +137,10 @@ public class InfoMationGUI {
 				
 			}
 		});
-		btnNewButton.setIcon(new ImageIcon(((new ImageIcon("D://end.jpg")).getImage()).getScaledInstance(40, 30, java.awt.Image.SCALE_SMOOTH)));
+		String path = a.class.getResource("").getPath(); // 현재 클래스의 절대 경로를 가져온다.
+		//System.out.println(path); // --> 절대 경로가 출력됨
+		
+		btnNewButton.setIcon(new ImageIcon(((new ImageIcon(path + "end.jpg")).getImage()).getScaledInstance(40, 30, java.awt.Image.SCALE_SMOOTH)));
 		panel_6.add(btnNewButton, "name_20218644746954");
 	}
 }

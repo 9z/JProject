@@ -6,6 +6,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import img.a;
+
 import java.awt.Font;
 import java.awt.Graphics;
 
@@ -68,7 +71,10 @@ public class LoginGUI {
 		JPanel panel = new JPanel(){
 	         public void paintComponent(Graphics g) {
 	             try {
-	                File fileInSamePackage = new File("D://bgLogin.png");
+	         		String path = a.class.getResource("").getPath(); // 현재 클래스의 절대 경로를 가져온다.
+	        		//System.out.println(path); // --> 절대 경로가 출력됨
+	         		
+	                File fileInSamePackage = new File(path + "bgLogin.png");
 	                icon = ImageIO.read(fileInSamePackage);
 	                Dimension d = getSize();// 전체화면
 	                g.drawImage(icon, 0, 0, d.width, d.height, null);
