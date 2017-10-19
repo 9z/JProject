@@ -8,22 +8,14 @@ public class DAO {
 	private PreparedStatement psmt = null;
 	private ResultSet rs = null;
 	
-	private String url = null;
-	private String user = null;
-	private String pw = null;
+	private String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
+	private String id = "kang5064";
+	private String pw = "kang5064";
 
 	// DB 연동
 	private void getConnection() throws ClassNotFoundException, SQLException { 
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		con = DriverManager.getConnection(url, user, pw);
-	}
-	
-	// 생성자 기입 사항 
-	// >> url, user, pw
-	public DAO(String url, String user, String pw) {
-		this.url = url;
-		this.user = user;
-		this.pw = pw;
 	}
 	
 	
