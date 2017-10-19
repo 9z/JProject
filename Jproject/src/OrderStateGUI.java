@@ -14,6 +14,8 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
+import img.a;
+
 import java.awt.Font;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JButton;
@@ -362,7 +364,10 @@ public class OrderStateGUI {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon("D:\\\uD55C\uC1A5 \uAC04\uD310.JPG"));
+		String path = a.class.getResource("").getPath(); // 현재 클래스의 절대 경로를 가져온다.
+		//System.out.println(path); // --> 절대 경로가 출력됨
+		
+		lblNewLabel.setIcon(new ImageIcon(path + "hansot.jpg"));
 		panel_6.add(lblNewLabel, "name_8678929989175");
 		
 		JPanel panel_7 = new JPanel();
@@ -381,13 +386,14 @@ public class OrderStateGUI {
 		panel_7.setLayout(new CardLayout(0, 0));
 		
 		JLabel lblNewLabel_8 = new JLabel("");
-		lblNewLabel_8.setIcon(new ImageIcon(((new ImageIcon("D://Moms.jpg")).getImage()).getScaledInstance(220, 40, java.awt.Image.SCALE_SMOOTH)));
+
+		lblNewLabel_8.setIcon(new ImageIcon(((new ImageIcon(path + "Moms.jpg")).getImage()).getScaledInstance(220, 40, java.awt.Image.SCALE_SMOOTH)));
 		panel_7.add(lblNewLabel_8, "name_9780837296343");
 		frame.getContentPane().add(panel_8);
 		panel_8.setLayout(new CardLayout(0, 0));
 		
 		JLabel lblNewLabel_9 = new JLabel("");
-		lblNewLabel_9.setIcon(new ImageIcon(((new ImageIcon("D://china.jpg")).getImage()).getScaledInstance(220, 60, java.awt.Image.SCALE_SMOOTH)));
+		lblNewLabel_9.setIcon(new ImageIcon(((new ImageIcon(path + "china.jpg")).getImage()).getScaledInstance(220, 60, java.awt.Image.SCALE_SMOOTH)));
 		panel_8.add(lblNewLabel_9, "name_10011210361500");
 		
 		JPanel panel_17 = new JPanel();
@@ -570,7 +576,8 @@ public class OrderStateGUI {
 		
 		JLabel lblNewLabel_11 = new JLabel("");
 		lblNewLabel_11.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_11.setIcon(new ImageIcon(((new ImageIcon("D://gubne.jpg")).getImage()).getScaledInstance(220, 60, java.awt.Image.SCALE_SMOOTH)));
+		
+		lblNewLabel_11.setIcon(new ImageIcon(((new ImageIcon(path + "gubne.jpg")).getImage()).getScaledInstance(220, 60, java.awt.Image.SCALE_SMOOTH)));
 		panel_18.add(lblNewLabel_11, "name_11722219312231");
 		
 		JPanel panel_19 = new JPanel();
@@ -664,13 +671,13 @@ public class OrderStateGUI {
 		
 		JLabel lblNewLabel_10 = new JLabel("");
 		lblNewLabel_10.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_10.setIcon(new ImageIcon(((new ImageIcon("D://nanta.jpg")).getImage()).getScaledInstance(220, 60, java.awt.Image.SCALE_SMOOTH)));
+		lblNewLabel_10.setIcon(new ImageIcon(((new ImageIcon(path + "nanta.jpg")).getImage()).getScaledInstance(220, 60, java.awt.Image.SCALE_SMOOTH)));
 		panel_17.add(lblNewLabel_10, "name_11645540798997");
 		frame.getContentPane().add(panel_19);
 		panel_19.setLayout(new CardLayout(0, 0));
 		
 		JLabel lblNewLabel_12 = new JLabel("");
-		lblNewLabel_12.setIcon(new ImageIcon(((new ImageIcon("D://sinjun.jpg")).getImage()).getScaledInstance(250, 60, java.awt.Image.SCALE_SMOOTH)));
+		lblNewLabel_12.setIcon(new ImageIcon(((new ImageIcon(path + "sinjun.jpg")).getImage()).getScaledInstance(250, 60, java.awt.Image.SCALE_SMOOTH)));
 		lblNewLabel_12.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_19.add(lblNewLabel_12, "name_12520306036400");
 		
@@ -692,7 +699,7 @@ public class OrderStateGUI {
 				
 			}
 		});
-		btnNewButton.setIcon(new ImageIcon(((new ImageIcon("D://end.jpg")).getImage()).getScaledInstance(40, 30, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton.setIcon(new ImageIcon(((new ImageIcon(path + "end.jpg")).getImage()).getScaledInstance(40, 30, java.awt.Image.SCALE_SMOOTH)));
 		panel_60.add(btnNewButton, "name_20720373053083");
 	}
 }

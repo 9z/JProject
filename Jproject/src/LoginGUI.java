@@ -1,32 +1,36 @@
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Graphics;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
-import java.awt.Dimension;
+import java.util.Arrays;
 
-import javax.swing.JPasswordField;
+import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.SpringLayout;
+import javax.swing.SwingConstants;
+
+import img.a;
 
 public class LoginGUI {
+<<<<<<< HEAD
 	
 	private DAO dao = new DAO();
+=======
+
+>>>>>>> branch 'master' of https://github.com/LeeDoGun/JProject.git
 	private BufferedImage icon;
 	private JFrame frame;
 	private JTextField id;
@@ -39,8 +43,7 @@ public class LoginGUI {
 	/**
 	 * Launch the application.
 	 */
-	
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -73,7 +76,10 @@ public class LoginGUI {
 		JPanel panel = new JPanel(){
 	         public void paintComponent(Graphics g) {
 	             try {
-	                File fileInSamePackage = new File("D://bgLogin.png");
+	         		String path = a.class.getResource("").getPath(); // 현재 클래스의 절대 경로를 가져온다.
+	        		//System.out.println(path); // --> 절대 경로가 출력됨
+	         		
+	                File fileInSamePackage = new File(path + "bgLogin.png");
 	                icon = ImageIO.read(fileInSamePackage);
 	                Dimension d = getSize();// 전체화면
 	                g.drawImage(icon, 0, 0, d.width, d.height, null);
@@ -135,6 +141,7 @@ public class LoginGUI {
 		panel.add(btnLogin);
 		btnLogin.setBackground(new Color(255, 153, 0));
 		btnLogin.addActionListener(new ActionListener() {
+<<<<<<< HEAD
 			public void actionPerformed(ActionEvent arg0) {			//로그인 버튼 액션
 			userID = id.getText();
 			String userPW = pw.getText();
@@ -147,9 +154,31 @@ public class LoginGUI {
 			}else {
 				JOptionPane.showMessageDialog(frame, "로그인 실패!");
 				
+=======
+			public void actionPerformed(ActionEvent arg0) {// 로그인 버튼 액션
+				/*
+				 * 회원가입시 String타입으로 아이디를 inputID 
+				 * 패스워드를 userPwChange에 저장함.
+				 */
+
+				String userID = id.getText();
+				char[] userPW = pw.getPassword();
+
+				if (userID.equals("id") && isPasswordCorrect(userPW)) {
+
+					JOptionPane.showMessageDialog(frame, "로그인 성공!");
+
+					// 패스워드를 String타입으로 userPWchange에 저장함.
+					String userPwChange = "";
+					userPwChange = new String(userPW, 0, userPW.length);
+
+				} else {
+					JOptionPane.showMessageDialog(frame, "로그인 실패!");
+				}
+
+>>>>>>> branch 'master' of https://github.com/LeeDoGun/JProject.git
 			}
-				
-			}
+
 		});
 		btnLogin.setFont(new Font("휴먼모음T", Font.PLAIN, 12));
 		
@@ -169,7 +198,27 @@ public class LoginGUI {
 		btnJoin.setBackground(new Color(51, 153, 204));
 		btnJoin.setFont(new Font("휴먼모음T", Font.PLAIN, 12));
 	}
+<<<<<<< HEAD
 	public String getUserID(){
 		return userID;
+=======
+
+	// 패스워드를 검사
+	private static boolean isPasswordCorrect(char[] input) {
+		boolean isCorrect = true;
+
+		char[] correctPassword = { 'p', 'w' };
+
+		if (input.length != correctPassword.length) {
+			isCorrect = false;
+		} else {
+			isCorrect = Arrays.equals(input, correctPassword);
+		}
+
+		// Zero out the password.
+		Arrays.fill(correctPassword, '0');
+
+		return isCorrect;
+>>>>>>> branch 'master' of https://github.com/LeeDoGun/JProject.git
 	}
 }
