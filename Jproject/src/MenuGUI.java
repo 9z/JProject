@@ -17,6 +17,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
+
+import img.a;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
@@ -122,8 +125,10 @@ public class MenuGUI {
 		panel_8.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_24 = new JButton("New button");
-
-		btnNewButton_24.setIcon(new ImageIcon(((new ImageIcon("D://abc.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		String path = a.class.getResource("").getPath(); // 현재 클래스의 절대 경로를 가져온다.
+		//System.out.println(path); // --> 절대 경로가 출력됨
+		
+		btnNewButton_24.setIcon(new ImageIcon(((new ImageIcon(path + "abc.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		btnNewButton_24.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -147,8 +152,12 @@ public class MenuGUI {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
+			
 		});
-		btnNewButton.setIcon(new ImageIcon(((new ImageIcon("D://two.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		path = a.class.getResource("").getPath(); // 현재 클래스의 절대 경로를 가져온다.
+		//System.out.println(path); // --> 절대 경로가 출력됨
+		
+		btnNewButton.setIcon(new ImageIcon(((new ImageIcon(path + "two.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_9.add(btnNewButton);
 
 		JLabel lblNewLabel_6 = new JLabel(
@@ -163,7 +172,10 @@ public class MenuGUI {
 		panel_10.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setIcon(new ImageIcon(((new ImageIcon("D://c.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		path = a.class.getResource("").getPath(); // 현재 클래스의 절대 경로를 가져온다.
+		//System.out.println(path); // --> 절대 경로가 출력됨
+		
+		btnNewButton_1.setIcon(new ImageIcon(((new ImageIcon(path + "c.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_10.add(btnNewButton_1);
 
 		JLabel lblNewLabel_7 = new JLabel("<html>\uB3C8\uAE4C\uC2A4\uB3C4\uB828\uB2D8<br>     3,600\uC6D0<br></html>");
@@ -177,7 +189,8 @@ public class MenuGUI {
 		panel_11.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setIcon(new ImageIcon(((new ImageIcon("D://d.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+
+		btnNewButton_2.setIcon(new ImageIcon(((new ImageIcon(path + "d.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_11.add(btnNewButton_2);
 
 		JLabel lblNewLabel_8 = new JLabel(
@@ -192,7 +205,7 @@ public class MenuGUI {
 		panel_14.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_3 = new JButton("New button");
-		btnNewButton_3.setIcon(new ImageIcon(((new ImageIcon("D://e.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_3.setIcon(new ImageIcon(((new ImageIcon(path + "e.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_14.add(btnNewButton_3);
 
 		JLabel lblNewLabel_9 = new JLabel("<html>\uAE50\uD48D\uAE30\uB3C4\uC2DC\uB77D<br>     4,300\uC6D0<br></html>");
@@ -206,7 +219,7 @@ public class MenuGUI {
 		panel_12.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_4 = new JButton("New button");
-		btnNewButton_4.setIcon(new ImageIcon(((new ImageIcon("D://f.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_4.setIcon(new ImageIcon(((new ImageIcon(path + "f.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_12.add(btnNewButton_4);
 
 		JLabel lblNewLabel_10 = new JLabel(
@@ -221,7 +234,7 @@ public class MenuGUI {
 		panel_26.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_5 = new JButton("New button");
-		btnNewButton_5.setIcon(new ImageIcon(((new ImageIcon("D://g.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_5.setIcon(new ImageIcon(((new ImageIcon(path + "g.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -240,7 +253,7 @@ public class MenuGUI {
 		panel_20.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_6 = new JButton("New button");
-		btnNewButton_6.setIcon(new ImageIcon(((new ImageIcon("D://h.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_6.setIcon(new ImageIcon(((new ImageIcon(path + "h.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_20.add(btnNewButton_6);
 
 		JLabel lblNewLabel_12 = new JLabel("<html>\uAC15\uB41C\uC7A5\uBE44\uBE54\uBC25<br>     4,500\uC6D0<br></html>");
@@ -254,7 +267,7 @@ public class MenuGUI {
 		panel_13.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_7 = new JButton("New button");
-		btnNewButton_7.setIcon(new ImageIcon(((new ImageIcon("D://i.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_7.setIcon(new ImageIcon(((new ImageIcon(path + "i.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_13.add(btnNewButton_7);
 		
 		JPanel panel_35 = new JPanel();
@@ -271,7 +284,7 @@ public class MenuGUI {
 		panel_15.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_8 = new JButton("New button");
-		btnNewButton_8.setIcon(new ImageIcon(((new ImageIcon("D://j.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_8.setIcon(new ImageIcon(((new ImageIcon(path + "j.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_15.add(btnNewButton_8);
 
 		JLabel lblNewLabel_14 = new JLabel("<html>\uB9E4\uD654\uB3C4\uC2DC\uB77D<br>     10,000\uC6D0<br></html>");
@@ -285,7 +298,7 @@ public class MenuGUI {
 		panel_16.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_9 = new JButton("New button");
-		btnNewButton_9.setIcon(new ImageIcon(((new ImageIcon("D://k.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_9.setIcon(new ImageIcon(((new ImageIcon(path + "k.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_16.add(btnNewButton_9);
 
 		JLabel lblNewLabel_15 = new JLabel("<html>\uB3C8\uAE4C\uC2A4\uB36E\uBC25<br>     3,400\uC6D0<br></html>");
@@ -299,7 +312,7 @@ public class MenuGUI {
 		panel_17.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_10 = new JButton("New button");
-		btnNewButton_10.setIcon(new ImageIcon(((new ImageIcon("D://l.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_10.setIcon(new ImageIcon(((new ImageIcon(path + "l.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_17.add(btnNewButton_10);
 
 		JLabel lblNewLabel_16 = new JLabel("<html>\uB3C8\uAE4C\uC2A4\uCE74\uB808<br>     3,800\uC6D0<br></html>");
@@ -313,7 +326,7 @@ public class MenuGUI {
 		panel_18.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_11 = new JButton("New button");
-		btnNewButton_11.setIcon(new ImageIcon(((new ImageIcon("D://m.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_11.setIcon(new ImageIcon(((new ImageIcon(path + "m.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_18.add(btnNewButton_11);
 
 		JLabel lblNewLabel_17 = new JLabel("<html>\uCC38\uCE58\uB9C8\uC694<br>     2,700\uC6D0<br></html>");
@@ -327,7 +340,7 @@ public class MenuGUI {
 		panel_19.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_12 = new JButton("New button");
-		btnNewButton_12.setIcon(new ImageIcon(((new ImageIcon("D://n.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_12.setIcon(new ImageIcon(((new ImageIcon(path + "n.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_19.add(btnNewButton_12);
 
 		JLabel lblNewLabel_18 = new JLabel("<html>\uBE45\uCE58\uD0A8\uB9C8\uC694<br>     3,300\uC6D0<br></html>");
@@ -341,7 +354,7 @@ public class MenuGUI {
 		panel_21.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_13 = new JButton("New button");
-		btnNewButton_13.setIcon(new ImageIcon(((new ImageIcon("D://o.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_13.setIcon(new ImageIcon(((new ImageIcon(path + "o.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_21.add(btnNewButton_13);
 
 		JLabel lblNewLabel_19 = new JLabel("<html>\uB3C8\uCE58\uB9C8\uC694<br>     3,300\uC6D0<br></html>");
@@ -355,7 +368,7 @@ public class MenuGUI {
 		panel_22.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_14 = new JButton("New button");
-		btnNewButton_14.setIcon(new ImageIcon(((new ImageIcon("D://p.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_14.setIcon(new ImageIcon(((new ImageIcon(path + "p.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_22.add(btnNewButton_14);
 
 		JLabel lblNewLabel_20 = new JLabel("<html>\uAE40\uCE58\uCC0C\uAC1C<br>     3,000\uC6D0<br></html>");
@@ -369,7 +382,7 @@ public class MenuGUI {
 		panel_23.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_15 = new JButton("New button");
-		btnNewButton_15.setIcon(new ImageIcon(((new ImageIcon("D://q.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_15.setIcon(new ImageIcon(((new ImageIcon(path + "q.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_23.add(btnNewButton_15);
 
 		JLabel lblNewLabel_21 = new JLabel("<html>\uC721\uAC1C\uC7A5<br>     3,500\uC6D0<br></html>");
@@ -383,7 +396,7 @@ public class MenuGUI {
 		panel_24.setLayout(new BorderLayout(0, 0));
 
 		JButton btnNewButton_16 = new JButton("New button");
-		btnNewButton_16.setIcon(new ImageIcon(((new ImageIcon("D://r.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_16.setIcon(new ImageIcon(((new ImageIcon(path + "r.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_24.add(btnNewButton_16);
 
 		JLabel lblNewLabel_22 = new JLabel("<html>\uCE58\uD0A8\uC0D0\uB7EC\uB4DC<br>     3,600\uC6D0<br></html>");
@@ -401,7 +414,7 @@ public class MenuGUI {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_17.setIcon(new ImageIcon(((new ImageIcon("D://s.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_17.setIcon(new ImageIcon(((new ImageIcon(path + "s.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_25.add(btnNewButton_17);
 
 		JLabel lblNewLabel_23 = new JLabel("<html>\uB2ED\uAC15\uC815(\uC18C)<br>     2,500\uC6D0<br></html>");
@@ -419,7 +432,7 @@ public class MenuGUI {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_18.setIcon(new ImageIcon(((new ImageIcon("D://t.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_18.setIcon(new ImageIcon(((new ImageIcon(path + "t.jpg")).getImage()).getScaledInstance(170, 180, java.awt.Image.SCALE_SMOOTH)));
 		panel_27.add(btnNewButton_18);
 
 		JLabel lblNewLabel_24 = new JLabel("<html>\uBC18\uB2EC\uAC10\uC790\uD280\uAE40<br>     1,200\uC6D0<br></html>");
@@ -586,7 +599,7 @@ public class MenuGUI {
 				
 			}
 		});
-		btnNewButton_20.setIcon(new ImageIcon(((new ImageIcon("D://end.jpg")).getImage()).getScaledInstance(50, 30, java.awt.Image.SCALE_SMOOTH)));
+		btnNewButton_20.setIcon(new ImageIcon(((new ImageIcon(path + "end.jpg")).getImage()).getScaledInstance(50, 30, java.awt.Image.SCALE_SMOOTH)));
 		panel_29.add(btnNewButton_20, "name_19255370222850");
 
 	}
