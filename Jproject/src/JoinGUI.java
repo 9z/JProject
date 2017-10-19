@@ -71,8 +71,8 @@ public class JoinGUI {
 			public void paintComponent(Graphics g) {
 				try {
 					String path = a.class.getResource("").getPath(); // 현재 클래스의 절대 경로를 가져온다.
-					//System.out.println(path); // --> 절대 경로가 출력됨
-					
+					// System.out.println(path); // --> 절대 경로가 출력됨
+
 					File fileInSamePackage = new File(path + "bgLogin.png");
 					icon = ImageIO.read(fileInSamePackage);
 					Dimension d = getSize();// 전체화면
@@ -188,11 +188,17 @@ public class JoinGUI {
 		JButton button = new JButton("\uD68C\uC6D0\uAC00\uC785");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				/*
+				 * 회원가입시 String타입으로 아이디를 inputID 패스워드를 inputPwChange에 저장함.
+				 */
+
+				String inputID = inputId.getText();
+				char[] inputPW = inputPw.getPassword();//
+
 				// 회원등록시 빈칸 확인
-				if (inputId.getText().equals("")
-						|| isPasswordCorrect(inputPw.getPassword(), passwordField.getPassword())
-						|| isPasswordCorrect(inputPw.getPassword(), passwordField.getPassword())
-						|| inputName.getText().equals("") || inputPhonenum.getText().equals("")) {
+				if (inputId.getText().equals("") || isPasswordCorrect(inputPW, passwordField.getPassword())
+						|| isPasswordCorrect(inputPW, passwordField.getPassword()) || inputName.getText().equals("")
+						|| inputPhonenum.getText().equals("")) {
 					JOptionPane.showMessageDialog(frame, "빈칸을 입력해주세요");
 
 				}
@@ -203,8 +209,11 @@ public class JoinGUI {
 				} else {
 
 					JOptionPane.showMessageDialog(frame, "회원가입 성공!");
+					// 여기서 char[]를 String으로 패스워드 저장.
+					String inputPwChange = "";
+					inputPwChange = new String(inputPW, 0, inputPW.length);
 					frame.dispose();
-					LoginGUI login = new LoginGUI();
+					Login login = new Login();
 					login.main(null);
 				}
 

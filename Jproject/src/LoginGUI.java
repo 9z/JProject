@@ -28,7 +28,7 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 public class LoginGUI {
-	
+
 	private BufferedImage icon;
 	private JFrame frame;
 	private JTextField id;
@@ -37,8 +37,7 @@ public class LoginGUI {
 	/**
 	 * Launch the application.
 	 */
-	
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -136,21 +135,38 @@ public class LoginGUI {
 		panel.add(btnLogin);
 		btnLogin.setBackground(new Color(255, 153, 0));
 		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {			//로그인 버튼 액션
-			String userID = id.getText();
-			String userPW = pw.getText();
-			
-			if (userID.equals("id")&&userPW.equals("pw")) {
-				JOptionPane.showMessageDialog(frame, "로그인 성공!");
-				MainGUI main = new MainGUI();
-				main.main(null);
+			/*
+			 * 회원가입시 String타입으로 아이디를 inputID 
+			 * 패스워드를 inputPwChange에 저장함.
+			 */
+
+			String inputID = inputId.getText();
+			char[] inputPW = inputPw.getPassword();//
+
+			// 회원등록시 빈칸 확인
+			if (inputId.getText().equals("") || isPasswordCorrect(inputPW, passwordField.getPassword())
+					|| isPasswordCorrect(inputPW, passwordField.getPassword()) || inputName.getText().equals("")
+					|| inputPhonenum.getText().equals("")) {
+				JOptionPane.showMessageDialog(frame, "빈칸을 입력해주세요");
+
+			}
+
+			// 첫번째, 두번째 패스워드 일치하는지 확인
+			else if (!(isPasswordCorrect(inputPw.getPassword(), inputPwCheck.getPassword()))) {
+				JOptionPane.showMessageDialog(frame, "패스워드가 일치하지 않습니다");
+			} else {
+				
+				JOptionPane.showMessageDialog(frame, "회원가입 성공!");
+				// 여기서 char[]를 String으로 패스워드 저장.
+				String inputPwChange = "";
+				inputPwChange = new String(inputPW, 0, inputPW.length);
 				frame.dispose();
-			}else {
-				JOptionPane.showMessageDialog(frame, "로그인 실패!");
-				
+				Login login = new Login();
+				login.main(null);
 			}
-				
-			}
+
+		}
+
 		});
 		btnLogin.setFont(new Font("휴먼모음T", Font.PLAIN, 12));
 		
@@ -169,5 +185,23 @@ public class LoginGUI {
 		panel.add(btnJoin);
 		btnJoin.setBackground(new Color(51, 153, 204));
 		btnJoin.setFont(new Font("휴먼모음T", Font.PLAIN, 12));
+	}
+
+	// 패스워드를 검사
+	private static boolean isPasswordCorrect(char[] input) {
+		boolean isCorrect = true;
+
+		char[] correctPassword = { 'p', 'w' };
+
+		if (input.length != correctPassword.length) {
+			isCorrect = false;
+		} else {
+			isCorrect = Arrays.equals(input, correctPassword);
+		}
+
+		// Zero out the password.
+		Arrays.fill(correctPassword, '0');
+
+		return isCorrect;
 	}
 }
