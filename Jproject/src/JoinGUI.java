@@ -24,6 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 import img.a;
+import javax.swing.ImageIcon;
 
 public class JoinGUI {
 
@@ -82,6 +83,7 @@ public class JoinGUI {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+
 			}
 		};
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
@@ -131,7 +133,7 @@ public class JoinGUI {
 			}
 		});
 		idCheck.setBackground(new Color(192, 192, 192));
-		idCheck.setFont(new Font("ÈÞ¸Õ¸ðÀ½T", Font.PLAIN, 10));
+		idCheck.setFont(new Font("ÈÞ¸Õ¸ðÀ½T", Font.PLAIN, 14));
 		sl_panel.putConstraint(SpringLayout.EAST, inputId, -17, SpringLayout.WEST, idCheck);
 		sl_panel.putConstraint(SpringLayout.NORTH, idCheck, 134, SpringLayout.NORTH, panel);
 		sl_panel.putConstraint(SpringLayout.WEST, idCheck, 290, SpringLayout.WEST, panel);
@@ -186,6 +188,7 @@ public class JoinGUI {
 		panel.add(inputPhonenum);
 
 		JButton button = new JButton("\uD68C\uC6D0\uAC00\uC785");
+		button.setIcon(new ImageIcon(JoinGUI.class.getResource("/img/btn1.png")));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*
@@ -220,15 +223,17 @@ public class JoinGUI {
 			}
 
 		});
-		button.setBackground(new Color(0, 191, 255));
+		button.setBackground(Color.WHITE);
 		sl_panel.putConstraint(SpringLayout.NORTH, button, 30, SpringLayout.SOUTH, inputPhonenum);
-		sl_panel.putConstraint(SpringLayout.WEST, button, 126, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, button, 63, SpringLayout.SOUTH, inputPhonenum);
 		sl_panel.putConstraint(SpringLayout.EAST, button, -219, SpringLayout.EAST, panel);
-		button.setFont(new Font("ÈÞ¸Õ¸ðÀ½T", Font.PLAIN, 10));
+		button.setFont(new Font("ÈÞ¸Õ¸ðÀ½T", Font.PLAIN, 14));
 		panel.add(button);
 
 		JButton button_1 = new JButton("\uAC00\uC785\uCDE8\uC18C");
+		sl_panel.putConstraint(SpringLayout.WEST, button_1, 19, SpringLayout.EAST, button);
+		sl_panel.putConstraint(SpringLayout.EAST, button_1, -98, SpringLayout.EAST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, button, 0, SpringLayout.SOUTH, button_1);
+		sl_panel.putConstraint(SpringLayout.SOUTH, button_1, -31, SpringLayout.SOUTH, panel);
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -239,10 +244,7 @@ public class JoinGUI {
 		});
 		button_1.setBackground(new Color(205, 92, 92));
 		sl_panel.putConstraint(SpringLayout.NORTH, button_1, 30, SpringLayout.SOUTH, inputPhonenum);
-		sl_panel.putConstraint(SpringLayout.WEST, button_1, 19, SpringLayout.EAST, button);
-		sl_panel.putConstraint(SpringLayout.SOUTH, button_1, -39, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, button_1, -111, SpringLayout.EAST, panel);
-		button_1.setFont(new Font("ÈÞ¸Õ¸ðÀ½T", Font.PLAIN, 10));
+		button_1.setFont(new Font("ÈÞ¸Õ¸ðÀ½T", Font.PLAIN, 14));
 		panel.add(button_1);
 
 		inputPw = new JPasswordField();
@@ -269,6 +271,7 @@ public class JoinGUI {
 		panel.add(inputPwCheck);
 
 		JLabel label_1 = new JLabel("( - )\uB97C \uC81C\uC678\uD558\uACE0 \uC785\uB825\uD574\uC8FC\uC138\uC694");
+		sl_panel.putConstraint(SpringLayout.WEST, button, 0, SpringLayout.WEST, label_1);
 		sl_panel.putConstraint(SpringLayout.NORTH, label_1, 0, SpringLayout.NORTH, label_5);
 		sl_panel.putConstraint(SpringLayout.WEST, label_1, 6, SpringLayout.EAST, label_5);
 		label_1.setFont(new Font("ÇÔÃÊ·Òµ¸¿ò", Font.PLAIN, 11));
