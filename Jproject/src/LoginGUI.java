@@ -26,11 +26,16 @@ import javax.swing.SpringLayout;
 
 public class LoginGUI {
 	
+	private DAO dao = new DAO();
 	private BufferedImage icon;
 	private JFrame frame;
 	private JTextField id;
 	private JPasswordField pw;
-
+	
+	public ThreadTime tt = new ThreadTime();
+	public String userID;
+	public String userName = dao.start(userID).getName();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -131,7 +136,7 @@ public class LoginGUI {
 		btnLogin.setBackground(new Color(255, 153, 0));
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {			//로그인 버튼 액션
-			String userID = id.getText();
+			userID = id.getText();
 			String userPW = pw.getText();
 			
 			if (userID.equals("id")&&userPW.equals("pw")) {
@@ -163,5 +168,8 @@ public class LoginGUI {
 		panel.add(btnJoin);
 		btnJoin.setBackground(new Color(51, 153, 204));
 		btnJoin.setFont(new Font("휴먼모음T", Font.PLAIN, 12));
+	}
+	public String getUserID(){
+		return userID;
 	}
 }

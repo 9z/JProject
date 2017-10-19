@@ -7,6 +7,7 @@ public class ThreadTime extends Thread {
 
 	int year, mon, day, hour, min, sec;
 	private String nowTime = "";
+	private String dayTime = "";
 	Calendar cal = null;
 	int state = 0;
 
@@ -23,10 +24,11 @@ public class ThreadTime extends Thread {
 			sec = cal.get(Calendar.SECOND);
 
 			this.nowTime = year + "." + mon + "." + day + "." + hour + "." + min + "." + sec;
-
+			this.dayTime = year + "." + mon + "." + day;
+			
 			if (hour == 11 && state == 0) {
 				// 11시가 되고 바꾼 기록이 없다면 실행되는 조건
-				cont.randomSelect(dao.getMartUserName());
+//				cont.randomSelect(dao.getMartUserName());
 				state = 1;
 			}
 
@@ -46,6 +48,10 @@ public class ThreadTime extends Thread {
 	public String getNowTime() {
 		// 체크한 시각을 반환
 		return nowTime;
+	}
+	public String getDayTime(){
+		// 오늘 날짜를 반환 (주문지에 주문날짜 저장할때 쓰임)
+		return dayTime;
 	}
 
 }

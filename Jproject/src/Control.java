@@ -7,26 +7,23 @@ public class Control {
 
 	public void randomSelect(String[] src) {
 		/*
-		 * String 배열 src(당일 하나의 업체에 주문한 사람들의 이름 배열) 랜덤으로 한 사람을 뽑아 주문자로 업데이트 랜덤으로 한 사람을
-		 * 뽑아 결제자로 업데이트
+		 * String 배열 src(당일 하나의 업체에 주문한 사람들의 이름 배열) 
+		 * 랜덤으로 한 사람을 뽑아 주문자로 업데이트 
+		 * 랜덤으로 한 사람을 뽑아 결제자로 업데이트
+		 * 
 		 */
 
 		if (src.length >= 2) {
 
-			do { // 중복되지 않게 랜덤수 2개 반환
+			while (num1 == num2){ // 중복되지 않게 랜덤수 2개 반환
 				num1 = ran.nextInt(src.length);
 				num2 = ran.nextInt(src.length);
-
-			} while (num1 == num2);
-
+			}
+			
 			dao.update(src[num1], 2); // num1 >> 주문자
 			dao.update(src[num2], 3); // num2 >> 결제자
 
 		}
-
-	}
-
-	public String getNowTime() {
 
 	}
 
