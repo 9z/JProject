@@ -1,7 +1,6 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class ThreadTime extends Thread {
 
@@ -11,12 +10,12 @@ public class ThreadTime extends Thread {
 	int year, mon, day, hour, min, sec;
 	private String now = "";
 	private String mt = "";
-	private Date nowTimeDate = null;
-	private Date monTimeDate = null;
+
+
 
 	
 	
-	private SimpleDateFormat transFormat = null;
+
 	
 	
 	Calendar cal = null;
@@ -36,7 +35,7 @@ public class ThreadTime extends Thread {
 			
 			now = year + "/" + mon + "/" + day + " " + hour + ":" + min + ":" + sec;
 			mt = year + "/" + mon;
-			transFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			
 
 			try {
 				nowTimeDate = transFormat.parse(now);
@@ -78,12 +77,9 @@ public class ThreadTime extends Thread {
 
 	public Date getNowTime() {
 		// 체크한 시각을 반환
-		return nowTimeDate;
+		return now;
 	}
-	public Date getMonTime(){
-		// 오늘 날짜를 반환 (주문지에 주문날짜 저장할때 쓰임)
-		return monTimeDate;
-	}
+	
 	public String getMT(){
 		return mt;
 	}

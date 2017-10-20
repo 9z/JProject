@@ -13,7 +13,8 @@ public class DAO {
 	private Connection con = null;
 	private PreparedStatement psmt = null;
 	private ResultSet rs = null;
-	
+	private ThreadTime tt =new ThreadTime();
+
 	private String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
 	private String user = "kang5064";
 	private String pw = "kang5064";
@@ -24,13 +25,13 @@ public class DAO {
 		con = DriverManager.getConnection(url, user, pw);
 	}
 
-	public void update(String string, int num) {// 주문자, 결제자 결정해서 member테이블의 상태를
-												// 업데이트
+	public void update(String string, int num) { // 주문자, 결제자 결정해서 member테이블의 상태를
+													// 업데이트 <X>
 
 		try {
 			getConnection();
 
-			String sql = "update member set userstate = ? where username = ?";
+			String sql = "update member set userstate = ? where name = ?";
 			psmt = con.prepareStatement(sql);
 			psmt.setString(2, string);
 			psmt.setInt(1, num);
@@ -56,8 +57,9 @@ public class DAO {
 
 	}
 
-	
-	public void userInsert(String userID, String password, String name, String phoneNum) {// 회원가입시 유저정보 저장.
+	public void userInsert(String userID, String password, String name, String phoneNum) {// 회원가입시
+																							// 유저정보
+																							// 저장.
 
 		try {
 
@@ -104,8 +106,8 @@ public class DAO {
 			psmt = con.prepareStatement(sql);
 			psmt.setInt(1, num);
 			rs = psmt.executeQuery();
-			while(rs.next()){
-			phoneNum = rs.getString(1);
+			while (rs.next()) {
+				phoneNum = rs.getString(1);
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -157,7 +159,7 @@ public class DAO {
 		}
 	}
 
-	public void insertOrder(OrderList ol) { //주문시 주문자의 정보와 메뉴정보를 DB에 저장
+	public void insertOrder(OrderList ol) { // 주문시 주문자의 정보와 메뉴정보를 DB에 저장
 
 		try {
 
@@ -165,17 +167,14 @@ public class DAO {
 
 			String sql = "insert into oder values(?,?,?,?,?,?)";
 			psmt = con.prepareStatement(sql);
-			
-			
-				psmt.setString(1, ol.getDate());
-				psmt.setString(2, ol.getMartName());
-				psmt.setString(3, ol.getFoodname());
-				psmt.setInt(4, ol.getFoodprice());
-				psmt.setString(5, ol.getName());
-				psmt.setString(6, ol.getUserID());
-				psmt.executeUpdate();
-			
-			
+
+			psmt.setString(1, ol.getDate());
+			psmt.setString(2, ol.getMartName());
+			psmt.setString(3, ol.getFoodname());
+			psmt.setInt(4, ol.getFoodprice());
+			psmt.setString(5, ol.getName());
+			psmt.setString(6, ol.getUserID());
+			psmt.executeUpdate();
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -233,7 +232,9 @@ public class DAO {
 		return ls;
 	}
 
-	public Vector todayOrderList (String martname ,String dayTime){//오늘의 주문의 메뉴이름과 메뉴 개수 반화 (X)
+	public Vector todayOrderList(String martname, String dayTime) {// 오늘의 주문의
+																	// 메뉴이름과 메뉴
+																	// 개수 반화 (X)
 		Vector list = new Vector<>();
 		Vector row1 = null;
 		int totalPrice = 0;
@@ -244,39 +245,29 @@ public class DAO {
 
 			String sql = "select distinct oderfoodname from oder where oderdate like ? and odermart = ?";
 			psmt = con.prepareStatement(sql);
-			psmt.setString(1, dayTime+"%");
+			psmt.setString(1, dayTime + "%");
 			psmt.setString(2, martname);
 			rs = psmt.executeQuery();
-			
-			while(rs.next()){
+
+			while (rs.next()) {
 				menuName.add(rs.getString(1));
 			}
-			
+
 			for (int i = 0; i < menuName.size(); i++) {
 				sql = "select oderfoodname from oder where oderfoodname = ?";
 				psmt = con.prepareStatement(sql);
 				psmt.setString(1, menuName.get(i));
 				rs = psmt.executeQuery();
-				while(rs.next()){
+				while (rs.next()) {
 					count++;
 				}
-				row1 =new Vector<>();
+				row1 = new Vector<>();
 				row1.add(menuName.get(i));
 				row1.addElement(count);
 				list.add(row1);
 				count = 0;
 			}
-			
-				
-				
-			
-			
-			
-			
-			
-			
-			
-			
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -293,63 +284,174 @@ public class DAO {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return list;
 	}
-	
-	public Vector history(String userID, String monTime) { // 개인 히스토리 조회 >> sql문제
-	      Vector data = new Vector<>();
-	      Vector row = null;
-	      
-	      try {
-	         getConnection();
-	         
-	         String sql = "select oderdate, odermart, username, oderfoodname, oderfoodprice from oder where oderdate like ? and userid = ?";
-	         psmt = con.prepareStatement(sql);
-	         psmt.setString(2, userID);
-	         
-	        
-//	         java.sql.Date sqlMonTime = new java.sql.Date(monTime.getTime());
-	         
-	        		 
-	         psmt.setString(1, monTime+"%");
 
-	         rs = psmt.executeQuery();
+	public Vector history(String userID, String monTime) { // 개인 히스토리 조회 >>
+															// sql문제
+		Vector data = new Vector<>();
+		Vector row = null;
 
-	         while (rs.next()) {
+		try {
+			getConnection();
 
-	            row = new Vector<>();
-	            for (int i = 1; i <= 4; i++) {
-	               row.add(rs.getString(i));
-	            }
-	            row.add(rs.getInt(5));
+			String sql = "select oderdate, odermart, username, oderfoodname, oderfoodprice from oder where oderdate like ? and userid = ?";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(2, userID);
 
-	            data.add(row);
-	         }
+			// java.sql.Date sqlMonTime = new java.sql.Date(monTime.getTime());
 
-	         psmt.executeUpdate();
+			psmt.setString(1, monTime + "%");
 
-	      } catch (ClassNotFoundException e) {
-	         e.printStackTrace();
-	      } catch (SQLException e) {
-	         e.printStackTrace();
-	      } finally {
-	         try {
+			rs = psmt.executeQuery();
 
-	            if (rs != null)
-	               rs.close();
-	            if (psmt != null)
-	               psmt.close();
-	            if (con != null)
-	               con.close();
+			while (rs.next()) {
 
-	         } catch (SQLException e) {
-	            e.printStackTrace();
-	         }
-	      }
+				row = new Vector<>();
+				for (int i = 1; i <= 4; i++) {
+					row.add(rs.getString(i));
+				}
+				row.add(rs.getInt(5));
 
-	      return data;
-	   }
+				data.add(row);
+			}
 
-	
+			psmt.executeUpdate();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+				if (con != null)
+					con.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return data;
+	}
+
+	public ArrayList listSaverMember() { // 11시 5분이 되면 member 테이블에서 필요한 데이터 모두 불러 오기
+									// <X>
+		if("11:05".equals(tt.hour+":"+tt.min)){
+		try {
+			getConnection();
+
+			String sql = "select userid, username, userstate from member where userstate between 1 and 3";
+			psmt = con.prepareStatement(sql);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				
+			}
+
+			psmt.executeUpdate();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+				if (con != null)
+					con.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		}
+	}
+
+	public void listSaverOrder() {// 11시 5분이 되면 order 테이블에서 필요한 데이터 모두 불러 오기
+									// <Xs>
+
+		try {
+			getConnection();
+
+			String sql = "select oderdate, odermart, oderfoodname, oderfoodprice, userid from order where date = ?";
+			psmt = con.prepareStatement(sql);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+			}
+
+			psmt.executeUpdate();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+				if (con != null)
+					con.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+	public void allSave(){
+		
+		try {
+			getConnection();
+
+			String sql = "select userid, username, userstate from member where userstate between 1 and 3";
+			psmt = con.prepareStatement(sql);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				
+			}
+
+			psmt.executeUpdate();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+				if (con != null)
+					con.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+	}
 }
