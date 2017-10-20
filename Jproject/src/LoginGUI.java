@@ -165,8 +165,8 @@ public class LoginGUI {
 				 * 
 				 * */
 				
-				String loginId = userID;
-				String loginPw = userPwTemp;
+				String loginId = userID;//로그인 아이디
+				String loginPw = userPwTemp;//로그인 비번
 				
 				
 

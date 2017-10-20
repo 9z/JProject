@@ -44,6 +44,8 @@ public class Control {
 
 			return isCorrect;
 		}
+		
+		
 		public boolean isPasswordCorrect(char[] input) {
 			boolean isCorrect = true;
 			char[] correctPassword = {'p','w'};

@@ -228,10 +228,10 @@ public class JoinGUI {
 				 */
 				
 				
-				String joinId=inputID;
-				String joinPw=inputPwTemp;
-				String joinName = inputNameTemp;
-				String joinPhonenum=inputPhonenumTemp;
+				String joinId=inputID;//회원가입 아이디
+				String joinPw=inputPwTemp;//회원가입 비밀번호
+				String joinName = inputNameTemp;//회원가입 이름
+				String joinPhonenum=inputPhonenumTemp;//회원가입 폰번호
 				
 				
 
