@@ -52,7 +52,7 @@ public class MainGUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 601, 355);
+		frame.setBounds(100, 100, 704, 363);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
@@ -60,11 +60,11 @@ public class MainGUI {
 		JPanel panel = new JPanel();
 		springLayout.putConstraint(SpringLayout.NORTH, panel, 0, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, panel, 0, SpringLayout.WEST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, panel, 585, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel);
 
 		JPanel panel_1 = new JPanel();
 		springLayout.putConstraint(SpringLayout.SOUTH, panel, 0, SpringLayout.NORTH, panel_1);
+		springLayout.putConstraint(SpringLayout.EAST, panel, 0, SpringLayout.EAST, panel_1);
 		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 235, SpringLayout.NORTH, frame.getContentPane());
 		panel_1.setBackground(UIManager.getColor("info"));
 		panel.setLayout(new CardLayout(0, 0));
@@ -74,14 +74,14 @@ public class MainGUI {
 		//System.out.println(path); // --> 절대 경로가 출력됨
 		
 		lblNewLabel_1.setIcon(new ImageIcon(
-				((new ImageIcon(path+"food.jpg")).getImage()).getScaledInstance(600, 240, java.awt.Image.SCALE_SMOOTH)));
+				((new ImageIcon(path+"food.jpg")).getImage()).getScaledInstance(700, 240, java.awt.Image.SCALE_SMOOTH)));
 		
 		panel.add(lblNewLabel_1, "name_6161457944664");
 		springLayout.putConstraint(SpringLayout.WEST, panel_1, 0, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, 0, SpringLayout.SOUTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, panel_1, 0, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(panel_1);
-		panel_1.setLayout(new GridLayout(0, 4, 0, 0));
+		panel_1.setLayout(new GridLayout(0, 5, 0, 0));
 
 		JButton button = new JButton("\uC8FC\uBB38\uD604\uD669");
 		button.setForeground(Color.BLACK);
@@ -110,26 +110,34 @@ public class MainGUI {
 		button.setFont(new Font("배달의민족 한나는 열한살", Font.BOLD, 25));
 		panel_1.add(button);
 
-		JButton btnNewButton_2 = new JButton("\uC0AC\uC6A9\uC790\uC815\uBCF4");
+		JButton btnNewButton_2 = new JButton("\uC815\uBCF4");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				InfoMationGUI information = new InfoMationGUI();
+				information.main(null);
 
 			}
 		});
 		btnNewButton_2.setBackground(new Color(240, 255, 255));
 		btnNewButton_2.setFont(new Font("배달의민족 한나는 열한살", Font.BOLD, 25));
 		panel_1.add(btnNewButton_2);
+		
+		JButton button_3 = new JButton("\uC8FC\uBB38/\uACB0\uC81C");
+		button_3.setFont(new Font("배달의민족 한나는 열한살", Font.BOLD, 25));
+		button_3.setBackground(new Color(240, 255, 255));
+		panel_1.add(button_3);
+		
+				JButton button_2 = new JButton("\uC885 \uB8CC");
+				button_2.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
 
-		JButton button_2 = new JButton("\uC885 \uB8CC");
-		button_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+						frame.dispose();
 
-				frame.dispose();
-
-			}
-		});
-		button_2.setFont(new Font("배달의민족 한나는 열한살", Font.BOLD, 25));
-		button_2.setBackground(new Color(240, 255, 255));
-		panel_1.add(button_2);
+					}
+				});
+				button_2.setFont(new Font("배달의민족 한나는 열한살", Font.BOLD, 25));
+				button_2.setBackground(new Color(240, 255, 255));
+				panel_1.add(button_2);
 	}
 }
