@@ -122,7 +122,6 @@ public class JoinGUI {
 		sl_panel.putConstraint(SpringLayout.NORTH, idCheck, 0, SpringLayout.NORTH, inputId);
 		sl_panel.putConstraint(SpringLayout.WEST, idCheck, 12, SpringLayout.EAST, inputId);
 		sl_panel.putConstraint(SpringLayout.SOUTH, idCheck, 33, SpringLayout.NORTH, inputId);
-		sl_panel.putConstraint(SpringLayout.EAST, idCheck, -70, SpringLayout.EAST, panel);
 		idCheck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// id중복검사
@@ -156,6 +155,7 @@ public class JoinGUI {
 
 		JLabel checkMessage = new JLabel(
 				"\uBE44\uBC00\uBC88\uD638 \uD655\uC778\uC744 \uC704\uD574 \uB2E4\uC2DC\uD55C\uBC88 \uC785\uB825\uD574\uC8FC\uC138\uC694");
+		sl_panel.putConstraint(SpringLayout.EAST, idCheck, 0, SpringLayout.EAST, checkMessage);
 		sl_panel.putConstraint(SpringLayout.EAST, checkMessage, -63, SpringLayout.EAST, panel);
 		checkMessage.setFont(new Font("함초롬돋움", Font.PLAIN, 11));
 		panel.add(checkMessage);
@@ -303,7 +303,10 @@ public class JoinGUI {
 		sl_panel.putConstraint(SpringLayout.WEST, passwordField, -1, SpringLayout.EAST, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, passwordField, -10, SpringLayout.EAST, panel);
 		panel.add(passwordField);
+		
+		JLabel qqqq = new JLabel("");
+		sl_panel.putConstraint(SpringLayout.NORTH, qqqq, 0, SpringLayout.NORTH, lblNewLabel);
+		sl_panel.putConstraint(SpringLayout.WEST, qqqq, 14, SpringLayout.EAST, lblNewLabel);
+		panel.add(qqqq);
 	}
-
-	
 }
