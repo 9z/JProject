@@ -1,4 +1,7 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class ThreadTime extends Thread {
 
@@ -6,8 +9,16 @@ public class ThreadTime extends Thread {
 	private DAO dao = new DAO();
 
 	int year, mon, day, hour, min, sec;
-	private String nowTime = "";
-	private String dayTime = "";
+	private String now = "";
+	private String mt = "";
+	private Date nowTimeDate = null;
+	private Date monTimeDate = null;
+
+	
+	
+	private SimpleDateFormat transFormat = null;
+	
+	
 	Calendar cal = null;
 	int state = 0;
 
@@ -17,14 +28,34 @@ public class ThreadTime extends Thread {
 			cal = Calendar.getInstance();
 
 			year = cal.get(Calendar.YEAR);
-			mon = cal.get(Calendar.MONTH);
+			mon = cal.get(Calendar.MONTH)+1;
 			day = cal.get(Calendar.DAY_OF_MONTH);
 			hour = cal.get(Calendar.HOUR_OF_DAY);
 			min = cal.get(Calendar.MINUTE);
 			sec = cal.get(Calendar.SECOND);
+			
+			now = year + "/" + mon + "/" + day + " " + hour + ":" + min + ":" + sec;
+			mt = year + "/" + mon;
+			transFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
-			this.nowTime = year + "." + mon + "." + day + "." + hour + "." + min + "." + sec;
-			this.dayTime = year + "." + mon + "." + day;
+			try {
+				nowTimeDate = transFormat.parse(now);
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
+			transFormat = new SimpleDateFormat("yyyy/MM");
+			
+			try {
+				monTimeDate = transFormat.parse(mt);
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
+
+			
 			
 			if (hour == 11 && state == 0) {
 				// 11시가 되고 바꾼 기록이 없다면 실행되는 조건
@@ -45,13 +76,16 @@ public class ThreadTime extends Thread {
 
 	}
 
-	public String getNowTime() {
+	public Date getNowTime() {
 		// 체크한 시각을 반환
-		return nowTime;
+		return nowTimeDate;
 	}
-	public String getDayTime(){
+	public Date getMonTime(){
 		// 오늘 날짜를 반환 (주문지에 주문날짜 저장할때 쓰임)
-		return dayTime;
+		return monTimeDate;
+	}
+	public String getMT(){
+		return mt;
 	}
 
 }

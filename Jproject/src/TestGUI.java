@@ -9,6 +9,7 @@ public class TestGUI {
 
 	private JFrame frame;
 	private JTable table;
+	private ThreadTime tt = new ThreadTime();
 
 	/**
 	 * Launch the application.
@@ -37,18 +38,24 @@ public class TestGUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		tt.start();
 		DAO dao = new DAO();
+		Vector columnName = new Vector<>();
+		Vector data = new Vector<>();
+		columnName.add("1");
+		columnName.add("2");
+		columnName.add("3");
+		columnName.add("4");
+		columnName.add("5");
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		data = dao.history("a", tt.getMT());
+		table = new JTable(data,columnName);
+		frame.getContentPane().add(table, BorderLayout.CENTER);
 		
-		Vector columnNames = new Vector<>();
-		columnNames.add("¸Þ´º");
-		columnNames.add("Count");
-		
-		table = new JTable(dao.todayOrderList("ÇÑ¼Ü", "2017.10.19"), columnNames);
-		frame.getContentPane().add(table, BorderLayout.NORTH);
 	}
 
 }

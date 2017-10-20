@@ -37,7 +37,8 @@ public class JoinGUI {
 	private JPasswordField inputPwCheck;
 	private JPasswordField passwordField;
 	private Control cont = new Control();
-
+	private DAO dao = new DAO();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -192,10 +193,10 @@ public class JoinGUI {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				String inputID = null;
-				char[] inputPW = null;
-				String inputNameTemp=null;
-				String inputPhonenumTemp=null;
+				String inputID = inputId.getText();
+				char[] inputPW = inputPw.getPassword();
+				String inputNameTemp=inputName.getText();
+				String inputPhonenumTemp=inputPhonenum.getText();
 				String inputPwTemp = "";
 
 				// È¸¿øµî·Ï½Ã ºóÄ­ È®ÀÎ
@@ -233,7 +234,7 @@ public class JoinGUI {
 				String joinName = inputNameTemp;
 				String joinPhonenum=inputPhonenumTemp;
 				
-				
+				dao.userInsert(joinId, joinPw, joinName, joinPhonenum);
 
 			}
 			

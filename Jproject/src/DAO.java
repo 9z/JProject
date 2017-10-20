@@ -3,7 +3,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 
 public class DAO {
@@ -54,15 +56,15 @@ public class DAO {
 
 	}
 
-	// 회원가입시 유저정보 저장.
-	public void userInsert(String userID, String password, String name, String phoneNum) {
+	
+	public void userInsert(String userID, String password, String name, String phoneNum) {// 회원가입시 유저정보 저장.
 
 		try {
 
 			getConnection();
 
 			// DB에 내용입력
-			String sql = "insert into member values(?,?,?,?,null,null)";
+			String sql = "insert into member values(?,?,?,?,null,0)";
 
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, userID);
@@ -233,7 +235,7 @@ public class DAO {
 
 	public Vector todayOrderList (String martname ,String dayTime){//오늘의 주문의 메뉴이름과 메뉴 개수 반화 (X)
 		Vector list = new Vector<>();
-		Vector row1 = new Vector<>();
+		Vector row1 = null;
 		int totalPrice = 0;
 		int count = 0;
 		ArrayList<String> menuName = new ArrayList<String>();
@@ -258,6 +260,7 @@ public class DAO {
 				while(rs.next()){
 					count++;
 				}
+				row1 =new Vector<>();
 				row1.add(menuName.get(i));
 				row1.addElement(count);
 				list.add(row1);
@@ -294,21 +297,22 @@ public class DAO {
 		return list;
 	}
 	
-	public Vector history(String userID, String dayTime) { // 개인 히스토리 조회 >> sql문제
+	public Vector history(String userID, String monTime) { // 개인 히스토리 조회 >> sql문제
 	      Vector data = new Vector<>();
 	      Vector row = null;
-	      String dayTime2 = (Integer.parseInt(dayTime.replace(".", ""))-7)+"";
+	      
 	      try {
 	         getConnection();
-
-	         String sql = "select oderdate, odermart, username, oderfoodname, oderfoodprice from oder where userID = ? and oderdate = ?";
+	         
+	         String sql = "select oderdate, odermart, username, oderfoodname, oderfoodprice from oder where oderdate like ? and userid = ?";
 	         psmt = con.prepareStatement(sql);
-	         psmt.setString(1, userID);
+	         psmt.setString(2, userID);
 	         
+	        
+//	         java.sql.Date sqlMonTime = new java.sql.Date(monTime.getTime());
 	         
-	         
-//	         psmt.setString(3, dayTime2);
-	         psmt.setString(2, dayTime);
+	        		 
+	         psmt.setString(1, monTime+"%");
 
 	         rs = psmt.executeQuery();
 
@@ -346,4 +350,6 @@ public class DAO {
 
 	      return data;
 	   }
+
+	
 }
