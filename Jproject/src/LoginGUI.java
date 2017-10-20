@@ -151,6 +151,9 @@ public class LoginGUI {
 				if (userID.equals("id") && cont.isPasswordCorrect(userPW)) {
 
 					JOptionPane.showMessageDialog(frame, "로그인 성공!");
+					frame.dispose();
+					MainGUI main = new MainGUI();
+					main.main(null);
 
 					// 패스워드를 String타입으로 userPWchange에 저장함.
 				
