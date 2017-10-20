@@ -105,21 +105,24 @@ public class JoinGUI {
 		panel.add(lblNewLabel);
 
 		JLabel lblId = new JLabel("\uC544\uC774\uB514");
-		sl_panel.putConstraint(SpringLayout.WEST, lblId, 63, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, lblId, -338, SpringLayout.EAST, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, lblId, 1, SpringLayout.WEST, label);
+		sl_panel.putConstraint(SpringLayout.SOUTH, lblId, -415, SpringLayout.SOUTH, panel);
 		lblId.setFont(new Font("휴먼모음T", Font.PLAIN, 13));
 		panel.add(lblId);
 
 		inputId = new JTextField();
-		inputId.setFont(new Font("휴먼모음T", Font.PLAIN, 15));
-		sl_panel.putConstraint(SpringLayout.SOUTH, lblId, -4, SpringLayout.NORTH, inputId);
-		sl_panel.putConstraint(SpringLayout.NORTH, inputId, 135, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, inputId, -369, SpringLayout.SOUTH, panel);
+		sl_panel.putConstraint(SpringLayout.NORTH, inputId, 6, SpringLayout.SOUTH, lblId);
 		sl_panel.putConstraint(SpringLayout.WEST, inputId, 63, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, inputId, -159, SpringLayout.EAST, panel);
+		inputId.setFont(new Font("휴먼모음T", Font.PLAIN, 15));
 		panel.add(inputId);
 		inputId.setColumns(10);
 
 		JButton idCheck = new JButton("\uC911\uBCF5\uAC80\uC0AC");
+		sl_panel.putConstraint(SpringLayout.NORTH, idCheck, 0, SpringLayout.NORTH, inputId);
+		sl_panel.putConstraint(SpringLayout.WEST, idCheck, 12, SpringLayout.EAST, inputId);
+		sl_panel.putConstraint(SpringLayout.SOUTH, idCheck, 33, SpringLayout.NORTH, inputId);
+		sl_panel.putConstraint(SpringLayout.EAST, idCheck, -70, SpringLayout.EAST, panel);
 		idCheck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// id중복검사
@@ -135,42 +138,39 @@ public class JoinGUI {
 		});
 		idCheck.setBackground(new Color(192, 192, 192));
 		idCheck.setFont(new Font("휴먼모음T", Font.PLAIN, 14));
-		sl_panel.putConstraint(SpringLayout.EAST, inputId, -17, SpringLayout.WEST, idCheck);
-		sl_panel.putConstraint(SpringLayout.NORTH, idCheck, 134, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.WEST, idCheck, 290, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, idCheck, -370, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, idCheck, -63, SpringLayout.EAST, panel);
 		panel.add(idCheck);
 
 		JLabel pw = new JLabel("\uBE44\uBC00\uBC88\uD638");
-		sl_panel.putConstraint(SpringLayout.NORTH, pw, 6, SpringLayout.SOUTH, inputId);
-		sl_panel.putConstraint(SpringLayout.WEST, pw, 0, SpringLayout.WEST, lblId);
+		sl_panel.putConstraint(SpringLayout.SOUTH, inputId, -13, SpringLayout.NORTH, pw);
+		sl_panel.putConstraint(SpringLayout.EAST, lblId, 0, SpringLayout.EAST, pw);
+		sl_panel.putConstraint(SpringLayout.WEST, pw, 63, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, pw, -347, SpringLayout.SOUTH, panel);
 		pw.setFont(new Font("휴먼모음T", Font.PLAIN, 13));
 		panel.add(pw);
 
 		JLabel PwCheck = new JLabel("\uBE44\uBC00\uBC88\uD638 \uD655\uC778");
 		sl_panel.putConstraint(SpringLayout.NORTH, PwCheck, 45, SpringLayout.SOUTH, pw);
-		sl_panel.putConstraint(SpringLayout.WEST, PwCheck, 0, SpringLayout.WEST, lblId);
+		sl_panel.putConstraint(SpringLayout.WEST, PwCheck, 63, SpringLayout.WEST, panel);
 		PwCheck.setFont(new Font("휴먼모음T", Font.PLAIN, 13));
 		panel.add(PwCheck);
 
 		JLabel checkMessage = new JLabel(
 				"\uBE44\uBC00\uBC88\uD638 \uD655\uC778\uC744 \uC704\uD574 \uB2E4\uC2DC\uD55C\uBC88 \uC785\uB825\uD574\uC8FC\uC138\uC694");
-		sl_panel.putConstraint(SpringLayout.EAST, checkMessage, 0, SpringLayout.EAST, idCheck);
+		sl_panel.putConstraint(SpringLayout.EAST, checkMessage, -63, SpringLayout.EAST, panel);
 		checkMessage.setFont(new Font("함초롬돋움", Font.PLAIN, 11));
 		panel.add(checkMessage);
 
 		JLabel label_4 = new JLabel("\uC774\uB984");
 		sl_panel.putConstraint(SpringLayout.NORTH, label_4, 66, SpringLayout.SOUTH, PwCheck);
-		sl_panel.putConstraint(SpringLayout.WEST, label_4, 0, SpringLayout.WEST, lblId);
+		sl_panel.putConstraint(SpringLayout.WEST, label_4, 63, SpringLayout.WEST, panel);
 		label_4.setFont(new Font("휴먼모음T", Font.PLAIN, 13));
 		panel.add(label_4);
 
 		inputName = new JTextField();
 		sl_panel.putConstraint(SpringLayout.NORTH, inputName, 6, SpringLayout.SOUTH, label_4);
-		sl_panel.putConstraint(SpringLayout.WEST, inputName, 0, SpringLayout.WEST, lblId);
+		sl_panel.putConstraint(SpringLayout.WEST, inputName, 63, SpringLayout.WEST, panel);
 		sl_panel.putConstraint(SpringLayout.SOUTH, inputName, 39, SpringLayout.SOUTH, label_4);
-		sl_panel.putConstraint(SpringLayout.EAST, inputName, 0, SpringLayout.EAST, idCheck);
+		sl_panel.putConstraint(SpringLayout.EAST, inputName, -63, SpringLayout.EAST, panel);
 		inputName.setColumns(10);
 		panel.add(inputName);
 
@@ -182,21 +182,21 @@ public class JoinGUI {
 
 		inputPhonenum = new JTextField();
 		sl_panel.putConstraint(SpringLayout.NORTH, inputPhonenum, 6, SpringLayout.SOUTH, label_5);
-		sl_panel.putConstraint(SpringLayout.WEST, inputPhonenum, 0, SpringLayout.WEST, lblId);
+		sl_panel.putConstraint(SpringLayout.WEST, inputPhonenum, 63, SpringLayout.WEST, panel);
 		sl_panel.putConstraint(SpringLayout.SOUTH, inputPhonenum, -102, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, inputPhonenum, 0, SpringLayout.EAST, idCheck);
+		sl_panel.putConstraint(SpringLayout.EAST, inputPhonenum, -63, SpringLayout.EAST, panel);
 		inputPhonenum.setColumns(10);
 		panel.add(inputPhonenum);
 
 		JButton button = new JButton("\uD68C\uC6D0\uAC00\uC785");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*
-				 * 회원가입시 String타입으로 아이디를 inputID 패스워드를 inputPwChange에 저장함.
-				 */
-
-				String inputID = inputId.getText();
-				char[] inputPW = inputPw.getPassword();//
+			
+				String inputID = null;
+				char[] inputPW = null;
+				String inputNameTemp=null;
+				String inputPhonenumTemp=null;
+				String inputPwTemp = "";
 
 				// 회원등록시 빈칸 확인
 				if (inputId.getText().equals("") || cont.isPasswordCorrect(inputPW, passwordField.getPassword())
@@ -210,17 +210,38 @@ public class JoinGUI {
 				else if (!(cont.isPasswordCorrect(inputPw.getPassword(), inputPwCheck.getPassword()))) {
 					JOptionPane.showMessageDialog(frame, "패스워드가 일치하지 않습니다");
 				} else {
-
+					 inputID = inputId.getText();
+					 inputPW = inputPw.getPassword();
+					 inputNameTemp = inputName.getText();
+					 inputPhonenumTemp=inputPhonenum.getText();
 					JOptionPane.showMessageDialog(frame, "회원가입 성공!");
+					
 					// 여기서 char[]를 String으로 패스워드 저장.
-					String inputPwChange = "";
-					inputPwChange = new String(inputPW, 0, inputPW.length);
+					inputPwTemp = new String(inputPW, 0, inputPW.length);
 					frame.dispose();
 					LoginGUI login = new LoginGUI();
 					login.main(null);
 				}
+				
+				/*
+				 *  아래 변수 가져다가 쓰면 됨
+				 */
+				
+				
+				String joinId=inputID;
+				String joinPw=inputPwTemp;
+				String joinName = inputNameTemp;
+				String joinPhonenum=inputPhonenumTemp;
+				
+				
 
 			}
+			
+			
+			
+			
+			
+			
 
 		});
 		button.setBackground(Color.WHITE);
@@ -248,14 +269,16 @@ public class JoinGUI {
 		panel.add(button_1);
 
 		inputPw = new JPasswordField();
-		sl_panel.putConstraint(SpringLayout.NORTH, checkMessage, 67, SpringLayout.SOUTH, inputPw);
-		sl_panel.putConstraint(SpringLayout.NORTH, inputPw, 6, SpringLayout.SOUTH, pw);
+		sl_panel.putConstraint(SpringLayout.NORTH, inputPw, 187, SpringLayout.NORTH, panel);
 		sl_panel.putConstraint(SpringLayout.WEST, inputPw, 63, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, inputPw, -6, SpringLayout.NORTH, PwCheck);
-		sl_panel.putConstraint(SpringLayout.EAST, inputPw, 0, SpringLayout.EAST, idCheck);
+		sl_panel.putConstraint(SpringLayout.SOUTH, inputPw, -308, SpringLayout.SOUTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, inputPw, -63, SpringLayout.EAST, panel);
+		sl_panel.putConstraint(SpringLayout.NORTH, checkMessage, 67, SpringLayout.SOUTH, inputPw);
 		panel.add(inputPw);
 
 		inputPwCheck = new JPasswordField();
+		sl_panel.putConstraint(SpringLayout.WEST, inputPwCheck, 61, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, inputPwCheck, -63, SpringLayout.EAST, panel);
 		inputPwCheck.addKeyListener(new KeyAdapter() {
 
 		});
@@ -265,9 +288,7 @@ public class JoinGUI {
 			}
 		});
 		sl_panel.putConstraint(SpringLayout.NORTH, inputPwCheck, 6, SpringLayout.SOUTH, PwCheck);
-		sl_panel.putConstraint(SpringLayout.WEST, inputPwCheck, 61, SpringLayout.WEST, panel);
 		sl_panel.putConstraint(SpringLayout.SOUTH, inputPwCheck, -6, SpringLayout.NORTH, checkMessage);
-		sl_panel.putConstraint(SpringLayout.EAST, inputPwCheck, 0, SpringLayout.EAST, idCheck);
 		panel.add(inputPwCheck);
 
 		JLabel label_1 = new JLabel("( - )\uB97C \uC81C\uC678\uD558\uACE0 \uC785\uB825\uD574\uC8FC\uC138\uC694");

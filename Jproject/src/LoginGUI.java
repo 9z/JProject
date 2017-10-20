@@ -144,21 +144,31 @@ public class LoginGUI {
 				 * 회원가입시 String타입으로 아이디를 inputID 
 				 * 패스워드를 userPwChange에 저장함.
 				 */
-
 				String userID = id.getText();
 				char[] userPW = pw.getPassword();
+				String userPwTemp = "";
 
 				if (userID.equals("id") && cont.isPasswordCorrect(userPW)) {
 
 					JOptionPane.showMessageDialog(frame, "로그인 성공!");
 
 					// 패스워드를 String타입으로 userPWchange에 저장함.
-					String userPwChange = "";
-					userPwChange = new String(userPW, 0, userPW.length);
+				
+					userPwTemp = new String(userPW, 0, userPW.length);
 
 				} else {
 					JOptionPane.showMessageDialog(frame, "로그인 실패!");
 				}
+				
+				/*
+				 * 로그인시 아이디 비번 아래 변수 가져다가 쓰면 됨.
+				 * 
+				 * */
+				
+				String loginId = userID;
+				String loginPw = userPwTemp;
+				
+				
 
 
 			}
