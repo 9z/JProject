@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class Control {
@@ -26,5 +27,37 @@ public class Control {
 		}
 
 	}
+	
+	// 패스워드 검사하는 메소드
+		public boolean isPasswordCorrect(char[] input, char[] inputCheck) {
+			boolean isCorrect = true;
+			char[] correctPassword = inputCheck;
+
+			if (input.length != correctPassword.length) {
+				isCorrect = false;
+			} else {
+				isCorrect = Arrays.equals(input, correctPassword);
+			}
+
+			// Zero out the password.
+			Arrays.fill(correctPassword, '0');
+
+			return isCorrect;
+		}
+		public boolean isPasswordCorrect(char[] input) {
+			boolean isCorrect = true;
+			char[] correctPassword = {'p','w'};
+
+			if (input.length != correctPassword.length) {
+				isCorrect = false;
+			} else {
+				isCorrect = Arrays.equals(input, correctPassword);
+			}
+
+			// Zero out the password.
+			Arrays.fill(correctPassword, '0');
+
+			return isCorrect;
+		}
 
 }

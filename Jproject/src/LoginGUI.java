@@ -25,20 +25,17 @@ import javax.swing.SwingConstants;
 import img.a;
 
 public class LoginGUI {
-<<<<<<< HEAD
-	
-	private DAO dao = new DAO();
-=======
 
->>>>>>> branch 'master' of https://github.com/LeeDoGun/JProject.git
+
 	private BufferedImage icon;
 	private JFrame frame;
 	private JTextField id;
 	private JPasswordField pw;
+	private Control cont = new Control();
 	
 	public ThreadTime tt = new ThreadTime();
 	public String userID;
-	public String userName = dao.start(userID).getName();
+	//public String userName = dao.start(userID).getName();
 	
 	/**
 	 * Launch the application.
@@ -141,20 +138,7 @@ public class LoginGUI {
 		panel.add(btnLogin);
 		btnLogin.setBackground(new Color(255, 153, 0));
 		btnLogin.addActionListener(new ActionListener() {
-<<<<<<< HEAD
-			public void actionPerformed(ActionEvent arg0) {			//로그인 버튼 액션
-			userID = id.getText();
-			String userPW = pw.getText();
-			
-			if (userID.equals("id")&&userPW.equals("pw")) {
-				JOptionPane.showMessageDialog(frame, "로그인 성공!");
-				MainGUI main = new MainGUI();
-				main.main(null);
-				frame.dispose();
-			}else {
-				JOptionPane.showMessageDialog(frame, "로그인 실패!");
-				
-=======
+
 			public void actionPerformed(ActionEvent arg0) {// 로그인 버튼 액션
 				/*
 				 * 회원가입시 String타입으로 아이디를 inputID 
@@ -164,7 +148,7 @@ public class LoginGUI {
 				String userID = id.getText();
 				char[] userPW = pw.getPassword();
 
-				if (userID.equals("id") && isPasswordCorrect(userPW)) {
+				if (userID.equals("id") && cont.isPasswordCorrect(userPW)) {
 
 					JOptionPane.showMessageDialog(frame, "로그인 성공!");
 
@@ -176,7 +160,7 @@ public class LoginGUI {
 					JOptionPane.showMessageDialog(frame, "로그인 실패!");
 				}
 
->>>>>>> branch 'master' of https://github.com/LeeDoGun/JProject.git
+
 			}
 
 		});
@@ -198,27 +182,6 @@ public class LoginGUI {
 		btnJoin.setBackground(new Color(51, 153, 204));
 		btnJoin.setFont(new Font("휴먼모음T", Font.PLAIN, 12));
 	}
-<<<<<<< HEAD
-	public String getUserID(){
-		return userID;
-=======
 
-	// 패스워드를 검사
-	private static boolean isPasswordCorrect(char[] input) {
-		boolean isCorrect = true;
-
-		char[] correctPassword = { 'p', 'w' };
-
-		if (input.length != correctPassword.length) {
-			isCorrect = false;
-		} else {
-			isCorrect = Arrays.equals(input, correctPassword);
-		}
-
-		// Zero out the password.
-		Arrays.fill(correctPassword, '0');
-
-		return isCorrect;
->>>>>>> branch 'master' of https://github.com/LeeDoGun/JProject.git
-	}
 }
+	

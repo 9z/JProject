@@ -36,6 +36,7 @@ public class JoinGUI {
 	private JPasswordField inputPw;
 	private JPasswordField inputPwCheck;
 	private JPasswordField passwordField;
+	private Control cont = new Control();
 
 	/**
 	 * Launch the application.
@@ -188,7 +189,6 @@ public class JoinGUI {
 		panel.add(inputPhonenum);
 
 		JButton button = new JButton("\uD68C\uC6D0\uAC00\uC785");
-		button.setIcon(new ImageIcon(JoinGUI.class.getResource("/img/btn1.png")));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*
@@ -199,15 +199,15 @@ public class JoinGUI {
 				char[] inputPW = inputPw.getPassword();//
 
 				// 회원등록시 빈칸 확인
-				if (inputId.getText().equals("") || isPasswordCorrect(inputPW, passwordField.getPassword())
-						|| isPasswordCorrect(inputPW, passwordField.getPassword()) || inputName.getText().equals("")
+				if (inputId.getText().equals("") || cont.isPasswordCorrect(inputPW, passwordField.getPassword())
+						|| cont.isPasswordCorrect(inputPW, passwordField.getPassword()) || inputName.getText().equals("")
 						|| inputPhonenum.getText().equals("")) {
 					JOptionPane.showMessageDialog(frame, "빈칸을 입력해주세요");
 
 				}
 
 				// 첫번째, 두번째 패스워드 일치하는지 확인
-				else if (!(isPasswordCorrect(inputPw.getPassword(), inputPwCheck.getPassword()))) {
+				else if (!(cont.isPasswordCorrect(inputPw.getPassword(), inputPwCheck.getPassword()))) {
 					JOptionPane.showMessageDialog(frame, "패스워드가 일치하지 않습니다");
 				} else {
 
@@ -284,20 +284,5 @@ public class JoinGUI {
 		panel.add(passwordField);
 	}
 
-	// 패스워드 검사하는 메소드
-	private static boolean isPasswordCorrect(char[] input, char[] inputCheck) {
-		boolean isCorrect = true;
-		char[] correctPassword = inputCheck;
-
-		if (input.length != correctPassword.length) {
-			isCorrect = false;
-		} else {
-			isCorrect = Arrays.equals(input, correctPassword);
-		}
-
-		// Zero out the password.
-		Arrays.fill(correctPassword, '0');
-
-		return isCorrect;
-	}
+	
 }
